@@ -1,23 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<!-- saved from url=(0070) -->
+<html lang="en" class="light dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Umair Mir - Software Engineer Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="./Umair Mir - Software Engineer Portfolio_files/saved_resource"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="./Umair Mir - Software Engineer Portfolio_files/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./Umair Mir - Software Engineer Portfolio_files/css2" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
         
         .gradient-text {
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark .glass-effect {
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .card-hover {
@@ -25,8 +80,90 @@
         }
         
         .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-8px);
+        }
+        
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+        
+        .project-image {
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .project-card:hover .project-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .tech-badge {
+            transition: all 0.2s ease;
+        }
+        
+        .tech-badge:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
         }
         
         .timeline-dot {
@@ -36,12 +173,12 @@
         .timeline-dot::before {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             background: #3b82f6;
-            top: 0;
-            left: -10px;
+            top: 8px;
+            left: -8px;
             z-index: 2;
         }
         
@@ -54,138 +191,105 @@
             top: 0;
         }
         
-        .project-card {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-        
-        .project-card:hover::before {
-            opacity: 1;
-        }
-        
-        .project-card:hover .project-content {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .project-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem;
-            color: white;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-            z-index: 2;
-        }
-        
-        .tech-badge {
-            transition: all 0.2s ease;
-        }
-        
-        .tech-badge:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 5px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+        .dark .timeline-line {
+            background: #4b5563;
         }
     </style>
-</head>
-<body class="bg-gray-50 text-gray-800">
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.-bottom-4{bottom:-1rem}.-right-4{right:-1rem}.z-50{z-index:50}.order-1{order:1}.order-2{order:2}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-1{margin-left:0.25rem}.mr-2{margin-right:0.5rem}.mr-3{margin-right:0.75rem}.mr-4{margin-right:1rem}.mt-12{margin-top:3rem}.mt-16{margin-top:4rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-8{margin-top:2rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-14{height:3.5rem}.h-48{height:12rem}.h-56{height:14rem}.h-64{height:16rem}.h-full{height:100%}.w-10{width:2.5rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-56{width:14rem}.w-64{width:16rem}.w-full{width:100%}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-lg{max-width:32rem}@keyframes float{0%, 100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.animate-float{animation:float 6s ease-in-out infinite}@keyframes slideUp{0%{transform:translateY(20px);opacity:0}100%{transform:translateY(0);opacity:1}}.animate-slide-up{animation:slideUp 0.5s ease-out}@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}.animate-fade-in{animation:fadeIn 0.5s ease-in-out}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.rounded-r-lg{border-top-right-radius:0.5rem;border-bottom-right-radius:0.5rem}.border{border-width:1px}.border-2{border-width:2px}.border-4{border-width:4px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-blue-100{--tw-border-opacity:1;border-color:rgb(219 234 254 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-gray-800{--tw-border-opacity:1;border-color:rgb(31 41 55 / var(--tw-border-opacity, 1))}.border-primary-600{--tw-border-opacity:1;border-color:rgb(2 132 199 / var(--tw-border-opacity, 1))}.border-purple-600{--tw-border-opacity:1;border-color:rgb(147 51 234 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-blue-100{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.bg-green-100{--tw-bg-opacity:1;background-color:rgb(220 252 231 / var(--tw-bg-opacity, 1))}.bg-indigo-100{--tw-bg-opacity:1;background-color:rgb(224 231 255 / var(--tw-bg-opacity, 1))}.bg-pink-100{--tw-bg-opacity:1;background-color:rgb(252 231 243 / var(--tw-bg-opacity, 1))}.bg-primary-100{--tw-bg-opacity:1;background-color:rgb(224 242 254 / var(--tw-bg-opacity, 1))}.bg-primary-600{--tw-bg-opacity:1;background-color:rgb(2 132 199 / var(--tw-bg-opacity, 1))}.bg-purple-100{--tw-bg-opacity:1;background-color:rgb(243 232 255 / var(--tw-bg-opacity, 1))}.bg-red-100{--tw-bg-opacity:1;background-color:rgb(254 226 226 / var(--tw-bg-opacity, 1))}.bg-yellow-100{--tw-bg-opacity:1;background-color:rgb(254 249 195 / var(--tw-bg-opacity, 1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.from-blue-50{--tw-gradient-from:#eff6ff var(--tw-gradient-from-position);--tw-gradient-to:rgb(239 246 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-indigo-100{--tw-gradient-to:#e0e7ff var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-20{padding-bottom:5rem}.pl-8{padding-left:2rem}.pt-32{padding-top:8rem}.pt-8{padding-top:2rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-blue-800{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}.text-gray-200{--tw-text-opacity:1;color:rgb(229 231 235 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-green-500{--tw-text-opacity:1;color:rgb(34 197 94 / var(--tw-text-opacity, 1))}.text-green-800{--tw-text-opacity:1;color:rgb(22 101 52 / var(--tw-text-opacity, 1))}.text-indigo-800{--tw-text-opacity:1;color:rgb(55 48 163 / var(--tw-text-opacity, 1))}.text-pink-600{--tw-text-opacity:1;color:rgb(219 39 119 / var(--tw-text-opacity, 1))}.text-pink-800{--tw-text-opacity:1;color:rgb(157 23 77 / var(--tw-text-opacity, 1))}.text-primary-600{--tw-text-opacity:1;color:rgb(2 132 199 / var(--tw-text-opacity, 1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234 / var(--tw-text-opacity, 1))}.text-purple-800{--tw-text-opacity:1;color:rgb(107 33 168 / var(--tw-text-opacity, 1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-600{--tw-text-opacity:1;color:rgb(202 138 4 / var(--tw-text-opacity, 1))}.text-yellow-800{--tw-text-opacity:1;color:rgb(133 77 14 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:bg-primary-100:hover{--tw-bg-opacity:1;background-color:rgb(224 242 254 / var(--tw-bg-opacity, 1))}.hover\:bg-primary-50:hover{--tw-bg-opacity:1;background-color:rgb(240 249 255 / var(--tw-bg-opacity, 1))}.hover\:bg-primary-700:hover{--tw-bg-opacity:1;background-color:rgb(3 105 161 / var(--tw-bg-opacity, 1))}.hover\:text-primary-400:hover{--tw-text-opacity:1;color:rgb(56 189 248 / var(--tw-text-opacity, 1))}.hover\:text-primary-600:hover{--tw-text-opacity:1;color:rgb(2 132 199 / var(--tw-text-opacity, 1))}.hover\:text-primary-800:hover{--tw-text-opacity:1;color:rgb(7 89 133 / var(--tw-text-opacity, 1))}.hover\:shadow-xl:hover{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-primary-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(14 165 233 / var(--tw-ring-opacity, 1))}.dark\:block:is(.dark *){display:block}.dark\:hidden:is(.dark *){display:none}.dark\:border-gray-700:is(.dark *){--tw-border-opacity:1;border-color:rgb(55 65 81 / var(--tw-border-opacity, 1))}.dark\:border-gray-800:is(.dark *){--tw-border-opacity:1;border-color:rgb(31 41 55 / var(--tw-border-opacity, 1))}.dark\:border-primary-400:is(.dark *){--tw-border-opacity:1;border-color:rgb(56 189 248 / var(--tw-border-opacity, 1))}.dark\:bg-gray-900:is(.dark *){--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.dark\:bg-blue-900\/30:is(.dark *){background-color:rgb(30 58 138 / 0.3)}.dark\:bg-gray-700:is(.dark *){--tw-bg-opacity:1;background-color:rgb(55 65 81 / var(--tw-bg-opacity, 1))}.dark\:bg-gray-800:is(.dark *){--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.dark\:bg-green-900\/30:is(.dark *){background-color:rgb(20 83 45 / 0.3)}.dark\:bg-indigo-900\/30:is(.dark *){background-color:rgb(49 46 129 / 0.3)}.dark\:bg-pink-900\/30:is(.dark *){background-color:rgb(131 24 67 / 0.3)}.dark\:bg-primary-900\/30:is(.dark *){background-color:rgb(12 74 110 / 0.3)}.dark\:bg-purple-900\/30:is(.dark *){background-color:rgb(88 28 135 / 0.3)}.dark\:bg-red-900\/30:is(.dark *){background-color:rgb(127 29 29 / 0.3)}.dark\:bg-yellow-900\/30:is(.dark *){background-color:rgb(113 63 18 / 0.3)}.dark\:from-gray-800:is(.dark *){--tw-gradient-from:#1f2937 var(--tw-gradient-from-position);--tw-gradient-to:rgb(31 41 55 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.dark\:to-gray-900:is(.dark *){--tw-gradient-to:#111827 var(--tw-gradient-to-position)}.dark\:text-gray-200:is(.dark *){--tw-text-opacity:1;color:rgb(229 231 235 / var(--tw-text-opacity, 1))}.dark\:text-blue-200:is(.dark *){--tw-text-opacity:1;color:rgb(191 219 254 / var(--tw-text-opacity, 1))}.dark\:text-blue-400:is(.dark *){--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.dark\:text-gray-300:is(.dark *){--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.dark\:text-green-200:is(.dark *){--tw-text-opacity:1;color:rgb(187 247 208 / var(--tw-text-opacity, 1))}.dark\:text-indigo-200:is(.dark *){--tw-text-opacity:1;color:rgb(199 210 254 / var(--tw-text-opacity, 1))}.dark\:text-pink-200:is(.dark *){--tw-text-opacity:1;color:rgb(251 207 232 / var(--tw-text-opacity, 1))}.dark\:text-pink-400:is(.dark *){--tw-text-opacity:1;color:rgb(244 114 182 / var(--tw-text-opacity, 1))}.dark\:text-primary-400:is(.dark *){--tw-text-opacity:1;color:rgb(56 189 248 / var(--tw-text-opacity, 1))}.dark\:text-purple-200:is(.dark *){--tw-text-opacity:1;color:rgb(233 213 255 / var(--tw-text-opacity, 1))}.dark\:text-purple-400:is(.dark *){--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.dark\:text-red-200:is(.dark *){--tw-text-opacity:1;color:rgb(254 202 202 / var(--tw-text-opacity, 1))}.dark\:text-yellow-200:is(.dark *){--tw-text-opacity:1;color:rgb(254 240 138 / var(--tw-text-opacity, 1))}.dark\:text-yellow-400:is(.dark *){--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.dark\:hover\:bg-gray-800:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.dark\:hover\:bg-primary-900\/30:hover:is(.dark *){background-color:rgb(12 74 110 / 0.3)}.dark\:hover\:text-primary-400:hover:is(.dark *){--tw-text-opacity:1;color:rgb(56 189 248 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:order-1{order:1}.md\:order-2{order:2}.md\:mb-0{margin-bottom:0px}.md\:flex{display:flex}.md\:hidden{display:none}.md\:h-80{height:20rem}.md\:w-1\/2{width:50%}.md\:w-1\/3{width:33.333333%}.md\:w-2\/3{width:66.666667%}.md\:w-80{width:20rem}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:pb-28{padding-bottom:7rem}.md\:pl-12{padding-left:3rem}.md\:pt-40{padding-top:10rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-6xl{font-size:3.75rem;line-height:1}}@media (min-width: 1024px){.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}}</style></head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm shadow-sm z-50">
+    <nav class="fixed w-full glass-effect z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold gradient-text">UM</a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#about" class="nav-link hover:text-blue-600 transition">About</a>
-                <a href="#skills" class="nav-link hover:text-blue-600 transition">Skills</a>
-                <a href="#experience" class="nav-link hover:text-blue-600 transition">Experience</a>
-                <a href="#projects" class="nav-link hover:text-blue-600 transition">Projects</a>
-                <a href="#contact" class="nav-link hover:text-blue-600 transition">Contact</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300">About</a>
+                <a href="#skills" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300">Skills</a>
+                <a href="#experience" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300">Experience</a>
+                <a href="#projects" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300">Projects</a>
+                <a href="#contact" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 text-primary-600 dark:text-primary-400 font-semibold">Contact</a>
+                <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
             </div>
-            <button id="mobile-menu-btn" class="md:hidden text-gray-600 focus:outline-none">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
+            <div class="flex items-center space-x-4 md:hidden">
+                <button id="theme-toggle-mobile" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+                <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4 shadow-lg">
-            <a href="#about" class="block py-2 hover:text-blue-600 transition">About</a>
-            <a href="#skills" class="block py-2 hover:text-blue-600 transition">Skills</a>
-            <a href="#experience" class="block py-2 hover:text-blue-600 transition">Experience</a>
-            <a href="#projects" class="block py-2 hover:text-blue-600 transition">Projects</a>
-            <a href="#contact" class="block py-2 hover:text-blue-600 transition">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden glass-effect py-4 px-4">
+            <a href="#about" class="block py-3 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300">About</a>
+            <a href="#skills" class="block py-3 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300">Skills</a>
+            <a href="#experience" class="block py-3 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300">Experience</a>
+            <a href="#projects" class="block py-3 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300">Projects</a>
+            <a href="#contact" class="block py-3 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300">Contact</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Umair Mir</span></h1>
-                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-700">Software Engineer & Project Manager</h2>
-                <p class="text-lg mb-8 max-w-lg">With 10+ years of experience in IT, I specialize in web development, project management, and creating innovative digital solutions.</p>
-                <div class="flex space-x-4">
-                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition shadow-lg">Contact Me</a>
-                    <a href="#projects" class="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg transition">View Projects</a>
-                </div>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-                <div class="relative">
-                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
-                        <!-- Placeholder for profile image -->
-                        <img src="https://via.placeholder.com/400" alt="Umair Mir" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-lg shadow-lg">
-                        <p class="text-sm font-semibold">10+ Years Experience</p>
-                    </div>
-                </div>
-            </div>
+    <section class="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 animate-fade-in">
+  <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center">
+    
+    <!-- Text Section -->
+<div class="order-2 md:order-1 md:w-1/2 mb-10 md:mb-0 animate-slide-up flex justify-center">
+  <div class="flex flex-col items-start text-left">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">
+      Hi, I'm <span class="gradient-text">Umair Mir</span>
+    </h1>
+    <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-700 dark:text-gray-300">
+      Software Engineer &amp; Project Manager
+    </h2>
+    <p class="text-lg mb-8 max-w-lg">
+      With 10+ years of experience in IT, I specialize in web development, project management, and creating innovative digital solutions.
+    </p>
+    <div class="flex space-x-4">
+      <a href="#contact" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+        Contact Me
+      </a>
+      <a href="#projects" class="border-2 border-primary-600 text-primary-600 dark:border-primary-400 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-gray-800 px-6 py-3 rounded-lg transition-all duration-300">
+        View Projects
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <!-- Image Section -->
+    <div class="order-1 md:order-2 md:w-1/2 flex justify-center animate-float mb-10 md:mb-0">
+      <div class="relative">
+        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl">
+          <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRyZqBf5vRNIeMErYiIf-AeWSlTUa4T_pXk03RSeT8AOSwg4Rf5JO133gsBb6ebTGOwYz4s_nDG6pEfk2q8SlqOoc7s394b11BAjHzYn96g45rG8Jf2oTRwoj_OF6omEhjAv0x1HZVO9lDgegFUA6s8LqEgfv3rZ_26RYNTqbpdn8cmWyxbhM8c=w1280" alt="Umair Mir" class="w-full h-full object-cover">
         </div>
-    </section>
+        <div class="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg glass-effect">
+          <p class="text-sm font-semibold">10+ Years Experience</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-20 bg-white dark:bg-gray-900 animate-fade-in">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">About Me</h2>
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
                     <div class="relative">
-                        <div class="w-56 h-56 rounded-lg overflow-hidden border-4 border-blue-100 shadow-lg">
+                        <div class="w-56 h-56 rounded-lg overflow-hidden border-4 border-blue-100 dark:border-gray-700 shadow-lg">
                             <!-- Placeholder for another image -->
-                            <img src="https://via.placeholder.com/300" alt="About" class="w-full h-full object-cover">
+                            <img src="./Umair Mir - Software Engineer Portfolio_files/photo-1552581234-26160f608093" alt="About" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute -bottom-4 -right-4 bg-blue-600 text-white p-3 rounded-lg shadow-lg">
+                        <div class="absolute -bottom-4 -right-4 bg-primary-600 text-white p-3 rounded-lg shadow-lg">
                             <p class="text-sm font-semibold">28-11-1995</p>
                         </div>
                     </div>
@@ -193,28 +297,28 @@
                 <div class="md:w-2/3 md:pl-12">
                     <h3 class="text-2xl font-semibold mb-4">Personal Details</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                        <div class="flex items-center">
-                            <i class="fas fa-language text-blue-600 mr-3"></i>
+                        <div class="flex items-center p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+                            <i class="fas fa-language text-primary-600 mr-3"></i>
                             <span><strong>Languages:</strong> Pashto, Urdu, English</span>
                         </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-briefcase text-blue-600 mr-3"></i>
+                        <div class="flex items-center p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+                            <i class="fas fa-briefcase text-primary-600 mr-3"></i>
                             <span><strong>Experience:</strong> 10+ Years in IT</span>
                         </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-user-tie text-blue-600 mr-3"></i>
-                            <span><strong>Role:</strong> Project Manager & Web Developer</span>
+                        <div class="flex items-center p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+                            <i class="fas fa-user-tie text-primary-600 mr-3"></i>
+                            <span><strong>Role:</strong> Project Manager &amp; Web Developer</span>
                         </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-building text-blue-600 mr-3"></i>
+                        <div class="flex items-center p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+                            <i class="fas fa-building text-primary-600 mr-3"></i>
                             <span><strong>Company:</strong> Mir Soft Solutions PK</span>
                         </div>
                     </div>
                     <p class="mb-6">I'm a versatile software engineer with expertise in both frontend and backend technologies. With a strong foundation in web development, I've successfully managed and delivered numerous projects for clients across various industries. My passion lies in creating efficient, scalable solutions that drive business growth.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-blue-600 hover:text-blue-800 transition"><i class="fab fa-linkedin text-2xl"></i></a>
-                        <a href="#" class="text-blue-600 hover:text-blue-800 transition"><i class="fab fa-github text-2xl"></i></a>
-                        <a href="#" class="text-blue-600 hover:text-blue-800 transition"><i class="fab fa-twitter text-2xl"></i></a>
+                        <a href="#" class="text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 transition-all duration-300 p-3 bg-gray-100 dark:bg-gray-800 rounded-full"><i class="fab fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 transition-all duration-300 p-3 bg-gray-100 dark:bg-gray-800 rounded-full"><i class="fab fa-github text-xl"></i></a>
+                        <a href="#" class="text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 transition-all duration-300 p-3 bg-gray-100 dark:bg-gray-800 rounded-full"><i class="fab fa-twitter text-xl"></i></a>
                     </div>
                 </div>
             </div>
@@ -222,15 +326,15 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-50">
+    <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-800 animate-fade-in">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Technologies & Skills</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Technologies &amp; Skills</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Web Development -->
-                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-                    <div class="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-code text-blue-600 text-xl"></i>
+                <div class="bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 card-hover">
+                    <div class="bg-blue-100 dark:bg-blue-900/30 w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-blue-600 dark:text-blue-400 text-xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Web Development</h3>
                     <div class="space-y-2">
@@ -254,11 +358,11 @@
                 </div>
                 
                 <!-- CMS & Tools -->
-                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-                    <div class="bg-purple-100 w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-wordpress text-purple-600 text-xl"></i>
+                <div class="bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 card-hover">
+                    <div class="bg-purple-100 dark:bg-purple-900/30 w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-wordpress text-purple-600 dark:text-purple-400 text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">CMS & Tools</h3>
+                    <h3 class="text-xl font-semibold mb-3">CMS &amp; Tools</h3>
                     <div class="space-y-2">
                         <div class="flex items-center">
                             <i class="fas fa-check-circle text-green-500 mr-2"></i>
@@ -274,15 +378,15 @@
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                            <span>Debugging & Maintenance</span>
+                            <span>Debugging &amp; Maintenance</span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Designing -->
-                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-                    <div class="bg-pink-100 w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-paint-brush text-pink-600 text-xl"></i>
+                <div class="bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 card-hover">
+                    <div class="bg-pink-100 dark:bg-pink-900/30 w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-paint-brush text-pink-600 dark:text-pink-400 text-xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Designing</h3>
                     <div class="space-y-2">
@@ -302,9 +406,9 @@
                 </div>
                 
                 <!-- Other Skills -->
-                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-                    <div class="bg-yellow-100 w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-star text-yellow-600 text-xl"></i>
+                <div class="bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 card-hover">
+                    <div class="bg-yellow-100 dark:bg-yellow-900/30 w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-star text-yellow-600 dark:text-yellow-400 text-xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-3">Other Skills</h3>
                     <div class="space-y-2">
@@ -332,26 +436,26 @@
             <div class="mt-16">
                 <h3 class="text-2xl font-semibold mb-6 text-center">Tech Stack</h3>
                 <div class="flex flex-wrap justify-center gap-3">
-                    <span class="tech-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">HTML5</span>
-                    <span class="tech-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">CSS3</span>
-                    <span class="tech-badge bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full">JavaScript</span>
-                    <span class="tech-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">jQuery</span>
-                    <span class="tech-badge bg-purple-100 text-purple-800 px-4 py-2 rounded-full">Bootstrap</span>
-                    <span class="tech-badge bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full">PHP</span>
-                    <span class="tech-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">MySQL</span>
-                    <span class="tech-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">MariaDB</span>
-                    <span class="tech-badge bg-red-100 text-red-800 px-4 py-2 rounded-full">WordPress</span>
-                    <span class="tech-badge bg-red-100 text-red-800 px-4 py-2 rounded-full">Laravel</span>
-                    <span class="tech-badge bg-pink-100 text-pink-800 px-4 py-2 rounded-full">Photoshop</span>
-                    <span class="tech-badge bg-green-100 text-green-800 px-4 py-2 rounded-full">Canva</span>
-                    <span class="tech-badge bg-pink-100 text-pink-800 px-4 py-2 rounded-full">Adobe XD</span>
+                    <span class="tech-badge bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full">HTML5</span>
+                    <span class="tech-badge bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full">CSS3</span>
+                    <span class="tech-badge bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 px-4 py-2 rounded-full">JavaScript</span>
+                    <span class="tech-badge bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full">jQuery</span>
+                    <span class="tech-badge bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 px-4 py-2 rounded-full">Bootstrap</span>
+                    <span class="tech-badge bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 px-4 py-2 rounded-full">PHP</span>
+                    <span class="tech-badge bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full">MySQL</span>
+                    <span class="tech-badge bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full">MariaDB</span>
+                    <span class="tech-badge bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 px-4 py-2 rounded-full">WordPress</span>
+                    <span class="tech-badge bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 px-4 py-2 rounded-full">Laravel</span>
+                    <span class="tech-badge bg-pink-100 dark:bg-pink-900/30 text-pink-800 dark:text-pink-200 px-4 py-2 rounded-full">Photoshop</span>
+                    <span class="tech-badge bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-4 py-2 rounded-full">Canva</span>
+                    <span class="tech-badge bg-pink-100 dark:bg-pink-900/30 text-pink-800 dark:text-pink-200 px-4 py-2 rounded-full">Adobe XD</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-white">
+    <section id="experience" class="py-20 bg-white dark:bg-gray-900 animate-fade-in">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Work Experience</h2>
             
@@ -360,174 +464,581 @@
                 
                 <!-- Experience 1 -->
                 <div class="mb-12 relative pl-8 timeline-dot">
-                    <div class="bg-white border-l-4 border-blue-600 shadow-md p-6 rounded-r-lg">
+                    <div class="bg-white dark:bg-gray-800 border-l-4 border-primary-600 shadow-md p-6 rounded-r-lg">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-semibold">Project Manager & Web Developer</h3>
-                            <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">2018 - Present</span>
+                            <h3 class="text-xl font-semibold">Project Manager &amp; Web Developer</h3>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-sm px-3 py-1 rounded-full">2018 - Present</span>
                         </div>
-                        <h4 class="text-lg text-blue-600 mb-3">Mir Soft Solutions PK</h4>
-                        <p class="text-gray-600">Leading web development projects from conception to completion. Managing teams, client communications, and ensuring timely delivery of high-quality solutions.</p>
+                        <h4 class="text-lg text-primary-600 dark:text-primary-400 mb-3">Mir Soft Solutions PK</h4>
+                        <p class="text-gray-600 dark:text-gray-300">Leading web development projects from conception to completion. Managing teams, client communications, and ensuring timely delivery of high-quality solutions.</p>
                     </div>
                 </div>
                 
                 <!-- Experience 2 -->
                 <div class="mb-12 relative pl-8 timeline-dot">
-                    <div class="bg-white border-l-4 border-purple-600 shadow-md p-6 rounded-r-lg">
+                    <div class="bg-white dark:bg-gray-800 border-l-4 border-purple-600 shadow-md p-6 rounded-r-lg">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-semibold">Computer Teacher / Video Editor / Graphics Designer</h3>
-                            <span class="bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full">2012 - 2018</span>
+                            <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 text-sm px-3 py-1 rounded-full">2012 - 2018</span>
                         </div>
-                        <h4 class="text-lg text-purple-600 mb-3">New City & English Language Academy Pabbi</h4>
-                        <p class="text-gray-600">Teaching computer science fundamentals, creating educational video content, and designing graphics for promotional materials.</p>
+                        <h4 class="text-lg text-purple-600 dark:text-purple-400 mb-3">New City &amp; English Language Academy Pabbi</h4>
+                        <p class="text-gray-600 dark:text-gray-300">Teaching computer science fundamentals, creating educational video content, and designing graphics for promotional materials.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-50">
+<section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800 animate-fade-in">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Featured Projects</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
                 <!-- Project 1 -->
-                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
                     <div class="h-48 overflow-hidden">
-                        <!-- Placeholder for project image -->
-                        <img src="https://via.placeholder.com/600" alt="Tailoring System" class="w-full h-full object-cover">
+                        <img src="https://lh3.googleusercontent.com/sitesv/APaQ0STpJ977ZDIG3YQwmHMVPnyBv4r-grpckFHD6gOo4_a5sbz6aaqTHb8NkQMsS_IIVmdRIqB-YuTDOlAZqd67nnk88hGqRenvWS499dgrBxZvZy_ebl-p36G__x2iQoaCixiSU_JF-AE9d9oRzDpptokjbq6KE-XzuS6t6el5lNYJjx_Alnm9EfGrK8Xika5XfHRhpj5IQV2S5YlQ7upydj3qHaYEZh6wiWZA3fw=w1280" alt="Tailoring System Enterprise Level" class="w-full h-full object-cover project-image">
                     </div>
+                    <div class="project-overlay"></div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Tailoring System Enterprise Level</h3>
-                        <p class="text-gray-600 mb-4">Comprehensive management system for tailoring businesses with inventory, orders, and customer management.</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Comprehensive management system for tailoring businesses with inventory, orders, and customer management.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">PHP</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MySQL</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Laravel</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MySQL</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Laravel</span>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h4 class="text-lg font-semibold mb-2">Project Details</h4>
-                        <p class="text-sm">Enterprise-level solution for tailoring businesses with order tracking, inventory management, and customer portal.</p>
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Enterprise-level solution for tailoring businesses with order tracking, inventory management, and customer portal.</p>
                     </div>
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
                     <div class="h-48 overflow-hidden">
-                        <!-- Placeholder for project image -->
-                        <img src="https://via.placeholder.com/600" alt="PSO Management System" class="w-full h-full object-cover">
+                        <img src="https://lh3.googleusercontent.com/sitesv/APaQ0STYcNkMXFg0m3iV9DgUH8LWHg_GYkG0W3ykahvBbaT0YVcYepQ0Il8yis3578PeNoYU4vQXKaw-Im99QGwqL6G8dftxl__2XbTQUQjZXItNthXUg5fC5OmrIFUUc2noKgVrMJfk7d2B32lv_mEAjL01HrSncqn4HB63I78e64vAfFuYSvBNNFpMrKVYb9C2D4EkNC8eBWGBD52eHq1yu0_6QMaFP1876RkqxCA=w1280" alt="Pakistan State Oil Management System" class="w-full h-full object-cover project-image">
                     </div>
+                    <div class="project-overlay"></div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Pakistan State Oil Management System</h3>
-                        <p class="text-gray-600 mb-4">Custom management solution for PSO operations including inventory, sales, and reporting.</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Custom management solution for PSO operations including inventory, sales, and reporting.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">PHP</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MySQL</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">JavaScript</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MySQL</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">JavaScript</span>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h4 class="text-lg font-semibold mb-2">Project Details</h4>
-                        <p class="text-sm">Comprehensive system for managing oil operations with real-time reporting and analytics dashboard.</p>
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Comprehensive system for managing oil operations with real-time reporting and analytics dashboard.</p>
                     </div>
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
                     <div class="h-48 overflow-hidden">
-                        <!-- Placeholder for project image -->
-                        <img src="https://via.placeholder.com/600" alt="College Management System" class="w-full h-full object-cover">
+                        <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRmJw4lgIPwKaJbDLTElQnBmG9nEib9JDlrB4ZBGbdt1ITAoO4T9zet9QSu9zILNvHllN2ODCcADDh6q0Zbf29o4JvfsQYfqYZ7O6yT8NPUMs9UPZFFsmyTuyuep1YfWA98kRhlFMHK3U8nQM7AnoWthc4wlVjERlzHhzKEZyPLFDaFIs_quFnKkxSbtK1iytvSIS8dVyyYdIXPUd_Aa_Rmv4ycE90HSNNcGKo=w1280" alt="College Management System" class="w-full h-full object-cover project-image">
                     </div>
+                    <div class="project-overlay"></div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">College Management System</h3>
-                        <p class="text-gray-600 mb-4">Complete solution for educational institutions with student, faculty, and course management.</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Complete solution for educational institutions with student, faculty, and course management.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">PHP</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MySQL</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Bootstrap</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MySQL</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Bootstrap</span>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h4 class="text-lg font-semibold mb-2">Project Details</h4>
-                        <p class="text-sm">All-in-one platform for colleges with admission management, attendance tracking, and grade reporting.</p>
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">All-in-one platform for colleges with admission management, attendance tracking, and grade reporting.</p>
                     </div>
                 </div>
                 
                 <!-- Project 4 -->
-                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
                     <div class="h-48 overflow-hidden">
-                        <!-- Placeholder for project image -->
-                        <img src="https://via.placeholder.com/600" alt="Fast Labs PCR" class="w-full h-full object-cover">
+                        <img src="https://lh3.googleusercontent.com/sitesv/APaQ0STZUIKBHsAubQcNeQLd7wk4sMcsmquP_zoyCfpuhG2PXXN9NH2Kqtr4P9bbopIg__nqmBtsS2mJqigg6wYeMDefi_z5FBOfspRQN1lysCA3XEpvpnx1q0bG3JLWBdEHPW5Q285lrz2t_LRSZjazwXpx95x19uUONPKdN7AHOMZ7Dje0Wl7c0HXfxreo9jSDjMDncX0DE7qOYKEoFTJBtnkqmdw1iAKpCco74mc=w1280" alt="Fast Labs PCR Management System" class="w-full h-full object-cover project-image">
                     </div>
+                    <div class="project-overlay"></div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Fast Labs PCR Management System</h3>
-                        <p class="text-gray-600 mb-4">Specialized system for managing PCR testing operations with patient records and reporting.</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Specialized system for managing PCR testing operations with patient records and reporting.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">PHP</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MySQL</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">jQuery</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MySQL</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">jQuery</span>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h4 class="text-lg font-semibold mb-2">Project Details</h4>
-                        <p class="text-sm">Efficient management system for PCR testing labs with patient registration and result reporting.</p>
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Complete PCR testing management system with patient records, test tracking, and automated reporting.</p>
                     </div>
                 </div>
                 
                 <!-- Project 5 -->
-                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
                     <div class="h-48 overflow-hidden">
-                        <!-- Placeholder for project image -->
-                        <img src="https://via.placeholder.com/600" alt="Fast Labs Website" class="w-full h-full object-cover">
+                        <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQxKj57rcYwIARxClPGcIG14zJtDp4q5vy15WWCrptdIIk7ux8pN2gTksR1wh8CJD2U76lx3yT4BPX4SiVjrmF5zidBtVP2LbiZzj4LvNA7YGPDcKGg0pBrqrAoJhuOeIUL22umvMiKvwhlBRkIoOYMSeJVs5JzhMHuMN_2EXX1cQ3Y9EiFaFsSL3P0w-l5qHlBPsfso08JyR2sGuLJgI7vIkJgHBfejGtL=w1280" alt="Fast Labs Website" class="w-full h-full object-cover project-image">
                     </div>
+                    <div class="project-overlay"></div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Fast Labs Website</h3>
-                        <p class="text-gray-600 mb-4">Professional website for Fast Labs with online appointment booking and service information.</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Professional website for Fast Labs with online appointment booking and service information.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">WordPress</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Elementor</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">SEO</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Elementor</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">SEO</span>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h4 class="text-lg font-semibold mb-2">Project Details</h4>
-                        <p class="text-sm">Modern, responsive website with appointment booking system and service showcase.</p>
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Modern responsive website with appointment booking, service listings, and search engine optimization.</p>
                     </div>
                 </div>
                 
                 <!-- Project 6 -->
-                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
                     <div class="h-48 overflow-hidden">
-                        <!-- Placeholder for project image -->
-                        <img src="https://via.placeholder.com/600" alt="Shama Associated" class="w-full h-full object-cover">
+                        <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQeBpBtJxQyzyUaNUcdUJS8NA7gfoG4g-dYY_p8dpC3_ZBIgzX1JQR4eOBxyakEsWJmr8QgspbqviriX1hfA_qNa05vwcxZnMK9O-fcxuEuyxblMQ9t5wQErPq-PHG5PQ56sE2TKubzs0pny5XPO_2dmHW-lZP0rKgw68-SvX5sQ26Aey2xkZIZ0fJ52iygvP1HTbiRCOxm8BG8C-B5ZPsVtc3GgzQGJqTSZ0Y=w1280" alt="Shama Associated Industries Limited Pakistan" class="w-full h-full object-cover project-image">
                     </div>
+                    <div class="project-overlay"></div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Shama Associated Industries Limited Pakistan</h3>
-                        <p class="text-gray-600 mb-4">Corporate website and management system for industrial operations.</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Corporate website and management system for industrial operations.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">WordPress</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">PHP</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MySQL</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MySQL</span>
+                        </div>
+                        <a href="http://shamaail.com/" target="_blank" class="inline-block mt-3 text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 text-sm font-semibold">View Website <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Corporate website for industrial company with product catalog and management system.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 7 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/sitesv/APaQ0ST-0SnzGUoNVQpAKGn0vF6-1XzCwg5Px1NmF21DC4f2UeTnBdqKoMLtPamoMSmyceIVS8riO5DvrH3jpvav7kkQsr378yOg5fi1Vuc5q34CCpwnoyRfxDeGeDRP6kgXyvfvO1jB1RFeRP_Gk9j0VBxwUq5_IAOsGqwBZ6srrVecpAsg4ttL5B3iXIwCJJwC1Ujn03jDex5B0MHn1UATq041pDNwwy1-vM6ysd0=w1280" alt="Akbar Grinding Mills Pakistan" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Akbar Grinding Mills Pakistan</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Corporate website for grinding mill company in Pakistan.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                        </div>
+                        <a href="http://agm-smag.com/" target="_blank" class="inline-block mt-3 text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 text-sm font-semibold">View Website <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Professional website for industrial grinding mill company.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 8 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRV-Yw1IGSMW5rT77irynlJQ0VJhlaVYq2HdQ52bpw6iuC_LzTN3Z-Q9BzuGp5RKZ1jD2l_-JqObiiP4gT_HgkXjUJnHIwcyKpBPH_YqTizTvd2_934DgIiraJLselNM0x72KcmZL4d9Bdyx5xfGJLyTX7Y3lJSbf6WL53brp9k0NIUAJPKSwpk-Xap-_CivEpmGKNknNTA3mdgq9DRv4VleW6Ik_QlJZrC5hY=w1280" alt="Haji Hayat Bukhsh &amp; Sons Pakistan" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Haji Hayat Bukhsh &amp; Sons Pakistan</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Corporate website for established business in Pakistan.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                        </div>
+                        <a href="http://hhb.com.pk/" target="_blank" class="inline-block mt-3 text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 text-sm font-semibold">View Website <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Corporate website for established family business in Pakistan.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 9 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SR7aym2syQgdkpVVVw0gGnZ5b1b2Oc9k4IAjPDChgkisfWxDItMrI1UJeiRuCOSOmk72Pm7ltWZUrPYsl2_T-TXfWD6RpTm49fQjNMB-Th_LblbYnxcnZOH8XdQT9JyjUDqaGRSFoXvGrl4Ako8Z81m1PkuHswHdkHjBrdU9eh-4wjKQE_x" alt="Faadi.PK" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Faadi.PK</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">E-commerce platform for products and services in Pakistan.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WooCommerce</span>
+                        </div>
+                        <a href="http://faadi.pk/" target="_blank" class="inline-block mt-3 text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 text-sm font-semibold">View Website <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Full-featured e-commerce store with product management and payment integration.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 10 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SRpWFCUdbBrFpQe8k7drP-RUGEA01AaM2Cf7Ov4HyfxIQW3ACPNu42Djoie4WXyjDNk9jjFDmwYwNBMbJLPrhNQoRDvIJa4FlvGAomzshF4RollJfVsWhnbQZZPCERNMWD8wiGmXLat4IdBWecBk0j1PGjljbVBinyjlCCrEwZWoFJCeA99" alt="Luner Cosmetics Pakistan" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Luner Cosmetics Pakistan</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">E-commerce website for cosmetics and beauty products.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WooCommerce</span>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h4 class="text-lg font-semibold mb-2">Project Details</h4>
-                        <p class="text-sm">Corporate website with integrated management system for industrial operations.</p>
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Online store for cosmetics with product catalog and shopping cart functionality.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 11 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SQvAbw2w-LXBXNh0PANEjnyZIJsGwxcH1WgffDo-GyM3mOo5Z74rM3wz-u0HQKh4lbz4xp4xlj28nbOsdPsgQO8lhYk24ztx9o-hDq1k2aENzLCrWoj18DCCFzBRiMt8T2cnP4NkgV-4kr9bNJKuxv8n-_u8HXhPGdYRm2ievJEp_vO8pM8" alt="Al Marwa International" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Al Marwa International</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Corporate website for international trading company.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Professional corporate website for international business operations.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 12 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SSSkHEMtVcDcx61GTXQoysNtvXcUAEBC-hXbzNrkH-4Xx2w_7iVyXMXjdfVFJNwvMuH6PRheeXJYfB6_GUJ-QtFZl9RWKHSdsLeuhRV_KCl55Owz7fKzOFT-Bze5t8Vc6gOs4cGa-BH2ptET9CU_udnaII33NU3fmq64kgEHpFUjVQdYWtw" alt="Al Maroof Movers UAE" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Al Maroof Movers UAE</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Website for moving and logistics company in UAE.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Professional website for UAE-based moving and logistics company.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 13 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SQNhYAetf9SIJ1dAYWHg6Opt7Ivgq2fcfqprAuQsndgDW1PaU3IhP6tKf1mgkXwyT83r0toNjI2EIEpwh_DqV9m03kHq0w4dhCLl2t3A-GnFO1hmE-zsA2IkfcNyFhVVlqHVoDNXUEHNciUzFMwVaqEyYyiVvQieA1ztkVz0iJnSiDsGmNq" alt="Al Suda Used Furnitures UAE" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Al Suda Used Furnitures UAE</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">E-commerce website for used furniture in UAE.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WooCommerce</span>
+                        </div>
+                        <a href="http://alsudausedfurnitures.com/" target="_blank" class="inline-block mt-3 text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 text-sm font-semibold">View Website <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Online marketplace for buying and selling used furniture in UAE.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 14 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SS-5at1xXw-TjrfgjuQ4Miu2X4u7uGZGA0MvvNLma4qrV30TuAqvsB496zu1kghXyw97mLoIgOJuoba6TIQ5SCz3k3D3WL1dt-k6mrja0Oqmw3h23YyQzO7L2MTtl6Vm936XrAn_vZJb_GzqeIf1PVHGz5Uez4Sc3nFVUlMIy0wOwHEiUgW" alt="Fusion Marketing" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Fusion Marketing</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Digital marketing agency website with service listings.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">SEO</span>
+                        </div>
+                        <a href="http://fusionmarketingpro.com/" target="_blank" class="inline-block mt-3 text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 text-sm font-semibold">View Website <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Marketing agency website with portfolio and service showcase.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 15 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SSVfz4fzcrqzuJsceQy-illrDPdEtXaiLLs0J3j4MxC1qIEd0XR0uZ66D6RBN7cFrjRMNhlMLyLpBsaJF0ShSP2eR96B6IZa6tAOzDTDrYiHMId-10f1Ns5uMsDiKN6Z0tsE9ZRdcAlqFYAdZyovEzyjqS2lrwjmZNzA26xBYJ1CSpNFLzj" alt="Info Matrix UK" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Info Matrix UK</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Corporate website for UK-based IT solutions company.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                        </div>
+                        <a href="http://infomatrix-sol.com/" target="_blank" class="inline-block mt-3 text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 text-sm font-semibold">View Website <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Professional corporate website for UK IT solutions provider.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 16 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SQ9xNabOEofjzlba5Uj58-eHOphl9YvwuWFw8-ukYVYl5EWC_y5dBOysRS7ooiB9Lfa25GqmiCr8a2JObUAeKT_RbLkm2kVq6-sl6dVXZpMSTb96ovxYKAB3ngRJ7DedS-KADs7shz2lzLFlzN--zTDMvcKy_F11sab7dKenoCu-g4MOUh0" alt="Resolve Education UK" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Resolve Education UK</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Educational platform for UK-based education services.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                        </div>
+                        <a href="http://resolve-edu.co.uk/" target="_blank" class="inline-block mt-3 text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 text-sm font-semibold">View Website <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Education platform for UK-based educational services and courses.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 17 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SThyO23qt-0dZg7g8vxwMqtHneoWTjQcK73ddnvSmw-GJlhYvEXgKPJzBtq4JN1GrEh1kt_AefwWL1w_IK2tnR_DMBZeBeBcBmbjJ0OZGYNmdzScDS2244RoWEpbXs2fsOUm3gM9r_DVQ5VMFMgkF9V3jOHI5UYgYWgO7MQ80qAfo0DRpDJ" alt="Paradise Care UK" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Paradise Care UK</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Care services website for UK-based care provider.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                        </div>
+                        <a href="http://www.paradisecare.co.uk/" target="_blank" class="inline-block mt-3 text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 text-sm font-semibold">View Website <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Professional website for UK-based care services provider.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 18 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SS5daF_9Xw3HXAnhSymzjWxQZyjxmbTVIMxPR5lmH8i5li7tV5x6AlAZvu1RyMump-wBmCB5gaeXnvjITt6TtfCRftW6u13ljt97gFrss0JIcYTvXNpB5CgQRfmjOrxDGs6OdgEq7RBxkIe4s3mnnR7gpHyUEe8S8opmwo-I4D5aYHHl3oI" alt="Jaguar Security Services UK" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Jaguar Security Services UK</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Security services website for UK-based company.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                        </div>
+                        <a href="https://jaguarsecurityservices.co.uk/" target="_blank" class="inline-block mt-3 text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 text-sm font-semibold">View Website <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Corporate website for UK-based security services company.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 19 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SQTL_3SV960bby8tiygkm7pYuDIIcNw1gc6VTXeiVC1tSUyhMV7xEaHV3IlQ3TEKA19VHXfvhCbXe_NjDKrx-NyZ93SeNS_C10rXFk02aP6ai4ssd25roZZU3v7ZzPHIFl7vWzbqlIIssnLcN3J_VYkVCgjaeSKaq0n1wtg9oYuvxhZ5PZv" alt="Apex International Consultant" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Apex International Consultant</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Corporate website for immigration consultancy in Pakistan.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                        </div>
+                        <a href="http://apexconsultant.pk/" target="_blank" class="inline-block mt-3 text-primary-600 hover:text-primary-800 dark:hover:text-primary-400 text-sm font-semibold">View Website <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Professional consultancy website with service listings and inquiry forms.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 20 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0ST4i1zH089SCkC3Vli_ZKYjukaU2c83QsQjWDf-F7-1gmighgHkQADXLPOEXqdSUUS4LDdrixSs521y4fKAz9Bc17tKdEhasSl_-6YKixUtwIpI2c1Gm_3mfgyNt8ZksF3vjWdBuZcqks7A98KVoYKEicDL9pnPURLUlwe-pzzCE4GPDCt9" alt="Gulberg Town Nowshera SMS Portal" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Gulberg Town Nowshera SMS Portal</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">SMS portal for town management and communication.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">SMS portal for town management with bulk messaging and citizen communication.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 21 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SQB9l9LM_eObD7V3AICeIxCPbJLvjZWRy4Hy9hJSrYD3iuAC9qNJN0ZendwMbfkp9zZcydvQrVlb7rvloCJXscVbufpDqkvRal3lnrJLUfipUoO0Pp3ays3qjOQgiEbqpjE-cjxVeECkIQAWZJyDFioyku0Z_Qf2YWsKj5oPWeL832wLCTG" alt="YK PVC Management System" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">YK PVC Management System</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Business management system for PVC products company.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Complete business management system for PVC manufacturing company.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 22 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SQygjEBShh1Hu2XFXh6N9EyuJ33mNAJ8g58rMJwwEgmfhfpXe6UiG_O4ESLbsVsExvNehANfxbdJhxw9T0yxBDgUz0evoaDhrl5-DZiMMfqs-brDllyxmNgwVbY02iLIE9kC1DP9Qi4RshJtbT91eQTRrl4Pqq1TzIHNJEcBE6ZpspMTDDf" alt="Victoria Business Advisors Limited UK" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Victoria Business Advisors Limited UK</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Corporate website for UK-based business consultancy.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Professional consultancy website for UK-based business advisors.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 23 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SQlxkCA_TQ762vI9C5I058IbHB94VkH_NWw5yFmBd4Ajhln8XsvjPQoCUN0vYhj2uJhT4oOoAd4lBwwhmXPNmj09z8g55UEpo3Nlm4LcHDKB1NwSbcYxNtuoR_Ck7peTr7KrsfeZqKbBcxu878YWboDtC-QUSpqb800aGBXGXVyv8BjnvaD" alt="HOPE FACILITIES MANAGEMENT UK" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">HOPE FACILITIES MANAGEMENT UK</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Website for UK-based facilities management company.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Corporate website for UK facilities management services.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 24 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SQ3rUl7Th6Hgv0cqN733YUxPILrt9AMBB7fG4ZzGQNovNPmEqh5tjbwjKBFm39MB3cOvPk7-JeCryU3lZ4d2Rkr1aM8a_NwbVtvX_GGLsWjFuxRCRF9x3_0SYBQG0MFsiPwa7WDe6zKSGU6Y6_GtpMeaKymyay-dVhCheBW--KVY-hfC0eb" alt="AMD FILLING STATION" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">AMD FILLING STATION</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Management system for fuel filling station.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Complete management system for fuel station operations.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 25 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SQRQ0TO_QxGSMccfygrr0L9lsDDwpuDp723vSaaMpXWeaa9ewJwDR4LKtjnqStiPs2farqYkhKeCAZVlQ1bWEqf7uhLb45q0eSmd_7o0JpNtccJXl635-nBsso23WtrCmn3Jf0_QBmuJ2wMvHMc083U2chmUO8-G6L31mB9z29T5ntS-7i6" alt="Umroyyar E-Commerce Store" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Umroyyar E-Commerce Store</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Full-featured online store for various products.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WooCommerce</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Complete e-commerce solution with product management and payment integration.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 26 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./Umair Mir - Software Engineer Portfolio_files/APaQ0SRAcGmbgBTjM63z6212qCjj4VCp_1wkexo5dAxGKcNDqnvjDMqxzgOnYFofwSxQkrwAixA5DRS4P1XpWtNSIGXKjl9OdsuQE_iTQcUbtp5rnXna08hBW60PCwzTkQlXoNvbXINSwhIcC3sm6qfi6uTCc2E_ABAIShH0W9BtlS8EGf1aYalT" alt="SMD PAINTING &amp; DECOR UK" class="w-full h-full object-cover project-image">
+                    </div>
+                    <div class="project-overlay"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">SMD PAINTING &amp; DECOR UK</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Website for UK-based painting and decorating services.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">WordPress</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">PHP</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Project Details</h4>
+                        <p class="text-sm text-gray-200">Professional service website for UK painting and decorating company.</p>
                     </div>
                 </div>
             </div>
             
             <div class="text-center mt-12">
-                <button id="load-more-projects" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition shadow-lg">
-                    Load More Projects
-                </button>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-20 bg-white dark:bg-gray-900 animate-fade-in">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Get In Touch</h2>
             
@@ -536,33 +1047,33 @@
                     <div>
                         <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
                         <div class="space-y-4">
-                            <div class="flex items-start">
-                                <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            <div class="flex items-start p-4 rounded-lg bg-gray-50 dark:bg-gray-800">
+                                <div class="bg-primary-100 dark:bg-primary-900/30 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-primary-600 dark:text-primary-400"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-semibold">Location</h4>
-                                    <p class="text-gray-600">Peshawar, Pakistan</p>
+                                    <p class="text-gray-600 dark:text-gray-300">Main, G.T Road Pabbi, Khyber Pakhtunkhwa, Pakistan (24210)</p>
                                 </div>
                             </div>
                             
-                            <div class="flex items-start">
-                                <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-envelope text-blue-600"></i>
+                            <div class="flex items-start p-4 rounded-lg bg-gray-50 dark:bg-gray-800">
+                                <div class="bg-primary-100 dark:bg-primary-900/30 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-primary-600 dark:text-primary-400"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-semibold">Email</h4>
-                                    <p class="text-gray-600">umair@example.com</p>
+                                    <p class="text-gray-600 dark:text-gray-300">mrumairmir@gmail.com</p>
                                 </div>
                             </div>
                             
-                            <div class="flex items-start">
-                                <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-phone-alt text-blue-600"></i>
+                            <div class="flex items-start p-4 rounded-lg bg-gray-50 dark:bg-gray-800">
+                                <div class="bg-primary-100 dark:bg-primary-900/30 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone-alt text-primary-600 dark:text-primary-400"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold">Phone</h4>
-                                    <p class="text-gray-600">+92 300 1234567</p>
+                                    <h4 class="font-semibold">WhatsApp</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">+92 333 64 113 64</p>
                                 </div>
                             </div>
                         </div>
@@ -570,17 +1081,17 @@
                         <div class="mt-8">
                             <h4 class="font-semibold mb-4">Follow Me</h4>
                             <div class="flex space-x-4">
-                                <a href="#" class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-200 transition">
-                                    <i class="fab fa-linkedin text-blue-600"></i>
+                                <a href="#" class="bg-gray-100 dark:bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300">
+                                    <i class="fab fa-linkedin text-primary-600 dark:text-primary-400"></i>
                                 </a>
-                                <a href="#" class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-200 transition">
-                                    <i class="fab fa-github text-blue-600"></i>
+                                <a href="#" class="bg-gray-100 dark:bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300">
+                                    <i class="fab fa-github text-primary-600 dark:text-primary-400"></i>
                                 </a>
-                                <a href="#" class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-200 transition">
-                                    <i class="fab fa-twitter text-blue-600"></i>
+                                <a href="#" class="bg-gray-100 dark:bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300">
+                                    <i class="fab fa-twitter text-primary-600 dark:text-primary-400"></i>
                                 </a>
-                                <a href="#" class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-200 transition">
-                                    <i class="fab fa-facebook text-blue-600"></i>
+                                <a href="#" class="bg-gray-100 dark:bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300">
+                                    <i class="fab fa-facebook text-primary-600 dark:text-primary-400"></i>
                                 </a>
                             </div>
                         </div>
@@ -591,25 +1102,25 @@
                         <form id="contact-form" class="space-y-4">
                             <div>
                                 <label for="name" class="block mb-1 font-medium">Your Name</label>
-                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-800" required="">
                             </div>
                             
                             <div>
                                 <label for="email" class="block mb-1 font-medium">Your Email</label>
-                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-800" required="">
                             </div>
                             
                             <div>
                                 <label for="subject" class="block mb-1 font-medium">Subject</label>
-                                <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-800" required="">
                             </div>
                             
                             <div>
                                 <label for="message" class="block mb-1 font-medium">Message</label>
-                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-800" required=""></textarea>
                             </div>
                             
-                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition shadow-lg w-full">
+                            <button type="submit" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl w-full">
                                 Send Message
                             </button>
                         </form>
@@ -626,23 +1137,42 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
                     <h2 class="text-2xl font-bold gradient-text">Umair Mir</h2>
-                    <p class="text-gray-400 mt-2">Software Engineer & Project Manager</p>
+                    <p class="text-gray-400 mt-2">Software Engineer &amp; Project Manager</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#about" class="hover:text-blue-400 transition">About</a>
-                    <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
-                    <a href="#experience" class="hover:text-blue-400 transition">Experience</a>
-                    <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
-                    <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+                    <a href="#about" class="hover:text-primary-400 transition">About</a>
+                    <a href="#skills" class="hover:text-primary-400 transition">Skills</a>
+                    <a href="#experience" class="hover:text-primary-400 transition">Experience</a>
+                    <a href="#projects" class="hover:text-primary-400 transition">Projects</a>
+                    <a href="#contact" class="hover:text-primary-400 transition">Contact</a>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2023 Umair Mir. All rights reserved.</p>
+                <p>© 2026 Umair Mir. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Theme toggle functionality
+        const themeToggleBtns = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
+        const htmlElement = document.documentElement;
+        
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                htmlElement.classList.toggle('dark');
+                localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+            });
+        });
+        
+        // Set initial theme based on user preference or localStorage
+        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        if (savedTheme === 'dark') {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+        
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -689,121 +1219,11 @@
             });
             
             navLinks.forEach(link => {
-                link.classList.remove('text-blue-600', 'font-semibold');
+                link.classList.remove('text-primary-600', 'dark:text-primary-400', 'font-semibold');
                 if (link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('text-blue-600', 'font-semibold');
+                    link.classList.add('text-primary-600', 'dark:text-primary-400', 'font-semibold');
                 }
             });
-        });
-        
-        // Load more projects functionality
-        const loadMoreBtn = document.getElementById('load-more-projects');
-        const projectsGrid = document.querySelector('.grid');
-        
-        // Additional projects data (would normally come from an API)
-        const additionalProjects = [
-            {
-                title: "Akbar Grinding Mills Pakistan",
-                description: "Industrial website and management system for grinding mills operations.",
-                technologies: ["WordPress", "PHP", "MySQL"],
-                image: "https://via.placeholder.com/600"
-            },
-            {
-                title: "Faadi.PK",
-                description: "E-commerce platform for fashion and accessories.",
-                technologies: ["WordPress", "WooCommerce", "SEO"],
-                image: "https://via.placeholder.com/600"
-            },
-            {
-                title: "Luner Cosmetics Pakistan",
-                description: "E-commerce website for cosmetic products with online ordering.",
-                technologies: ["WordPress", "WooCommerce", "Elementor"],
-                image: "https://via.placeholder.com/600"
-            },
-            {
-                title: "Al Marwa International",
-                description: "Corporate website for international trading company.",
-                technologies: ["WordPress", "Elementor", "SEO"],
-                image: "https://via.placeholder.com/600"
-            },
-            {
-                title: "Al Maroof Movers UAE",
-                description: "Moving company website with booking system.",
-                technologies: ["WordPress", "PHP", "JavaScript"],
-                image: "https://via.placeholder.com/600"
-            },
-            {
-                title: "Al Suda Used Furnitures UAE",
-                description: "E-commerce platform for used furniture.",
-                technologies: ["WordPress", "WooCommerce", "PHP"],
-                image: "https://via.placeholder.com/600"
-            }
-        ];
-        
-        let projectsLoaded = 6;
-        
-        loadMoreBtn.addEventListener('click', () => {
-            // Load next 6 projects
-            const nextProjects = additionalProjects.slice(0, 6);
-            
-            nextProjects.forEach(project => {
-                const projectCard = document.createElement('div');
-                projectCard.className = 'project-card bg-white rounded-xl shadow-lg overflow-hidden card-hover';
-                projectCard.innerHTML = `
-                    <div class="h-48 overflow-hidden">
-                        <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">${project.title}</h3>
-                        <p class="text-gray-600 mb-4">${project.description}</p>
-                        <div class="flex flex-wrap gap-2">
-                            ${project.technologies.map(tech => `<span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">${tech}</span>`).join('')}
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h4 class="text-lg font-semibold mb-2">Project Details</h4>
-                        <p class="text-sm">${project.description}</p>
-                    </div>
-                `;
-                projectsGrid.appendChild(projectCard);
-            });
-            
-            projectsLoaded += 6;
-            
-            // Hide button if all projects are loaded
-            if (projectsLoaded >= 12) {
-                loadMoreBtn.style.display = 'none';
-            }
-        });
-        
-        // Contact form submission
-        const contactForm = document.getElementById('contact-form');
-        const formMessage = document.getElementById('form-message');
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-            
-            // Here you would normally send the data to a server
-            // For demo purposes, we'll just show a success message
-            
-            formMessage.textContent = `Thank you, ${name}! Your message has been sent successfully.`;
-            formMessage.className = 'mt-4 p-3 bg-green-100 text-green-700 rounded-lg';
-            formMessage.classList.remove('hidden');
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                formMessage.classList.add('hidden');
-            }, 5000);
         });
         
         // Add animation on scroll
@@ -826,5 +1246,5 @@
             observer.observe(section);
         });
     </script>
-</body>
-</html>
+
+</body></html>
